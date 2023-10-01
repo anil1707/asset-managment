@@ -20,6 +20,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import LayersIcon from "@mui/icons-material/Layers";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import SearchIcon from "@mui/icons-material/Search";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -302,9 +303,7 @@ const Home = () => {
                   <StyledTableCell align="left">
                     Allcoation Date
                   </StyledTableCell>
-                  <StyledTableCell align="left">
-                    Service Ticket
-                  </StyledTableCell>
+                  <StyledTableCell align="left">Service Ticket</StyledTableCell>
                   <StyledTableCell align="left">Last Update</StyledTableCell>
                   <StyledTableCell align="left">Varinty End</StyledTableCell>
                   <StyledTableCell align="left">Location</StyledTableCell>
@@ -313,7 +312,7 @@ const Home = () => {
               <TableBody>
                 {rows.map((row) => (
                   <StyledTableRow key={row.assetId}>
-                     <StyledTableCell align="left">
+                    <StyledTableCell align="left">
                       {row.assetType}
                     </StyledTableCell>
                     <StyledTableCell component="th" scope="row">
@@ -326,9 +325,7 @@ const Home = () => {
                     <StyledTableCell align="left">
                       {row.description}
                     </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.status}
-                    </StyledTableCell>
+                    <StyledTableCell align="left">{row.status}</StyledTableCell>
                     <StyledTableCell align="left">
                       {row.allocatedTo}
                     </StyledTableCell>
@@ -344,8 +341,10 @@ const Home = () => {
                     <StyledTableCell align="left">
                       {row.varintyEnd}
                     </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.location}
+                    <StyledTableCell align="left" width={"5.5%"}>
+                      <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+                        {row.location} <MoreVertIcon />
+                       </Box>
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
