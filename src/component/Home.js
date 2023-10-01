@@ -348,6 +348,7 @@ const Home = () => {
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
+                
               </TableBody>
             </Table>
           </TableContainer>
