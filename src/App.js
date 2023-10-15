@@ -1,14 +1,18 @@
-
-import Home from "./component/Home";
+import Home from "./component/Home/Home";
 import Nav from "./component/Nav";
+import { Routes, Route } from "react-router-dom";
+import AddAsset from "./component/addAsset/AddAsset";
 
 
 function App() {
   return (
-    <div className="App" style={{width:"99.8vw", height:"92.7vh", backgroundColor:"#e1e2e3"}} >
+    <>
       <Nav />
-      <Home />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />}> </Route>
+        <Route path="/addAsset" element={<AddAsset />}></Route>
+      </Routes>
+    </>
   );
 }
 
