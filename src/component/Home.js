@@ -1,46 +1,12 @@
-import {
-  Box,
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TextField,
-  Typography,
-  styled,
-  tableCellClasses,
-} from "@mui/material";
-import React from "react";
+import { Box, Paper, Typography } from "@mui/material";
+import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import EastIcon from "@mui/icons-material/East";
 import EditIcon from "@mui/icons-material/Edit";
 import LayersIcon from "@mui/icons-material/Layers";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import SearchIcon from "@mui/icons-material/Search";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
+import TableComponent from "./TableComponent";
 
 function createData(
   assetType,
@@ -87,13 +53,175 @@ const rows = [
     "1 Jan 2024",
     "Pune"
   ),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Allocated",
+    "Akrisht Yadav",
+    "30 Sep 2023",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Allocated",
+    "Sharib Saifi",
+    "30 Sep 2023",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Deallocated",
+    "NA",
+    "NA",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Inactive",
+    "NA",
+    "NA",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Allocated",
+    "Anil Yadav",
+    "30 Sep 2023",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Defactive",
+    "NA",
+    "NA",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Available for allocation",
+    "NA",
+    "NA",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Available for allocation",
+    "NA",
+    "NA",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
+  createData(
+    "Laptop",
+    "Dell",
+    "#01234",
+    "Rs 53.900",
+    "Dell Inspiron is a Windows 10 laptop",
+    "Available for allocation",
+    "NA",
+    "NA",
+    "SER#12345678",
+    "30 Sep 2023",
+    "1 Jan 2024",
+    "Pune"
+  ),
 ];
 
 const Home = () => {
+  const [isOnInventry, setIsOnInventry] = useState(false);
+  const [isOnAllocateAssete, setIsOnAllocateAssete] = useState(false);
+  const [isOnDeallocate, setIsOnDeallocate] = useState(false);
+  const [selectTab, setSelectTab] = useState("")
+
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const open = Boolean(anchorEl);
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  // return focus to the button when we transitioned from !open -> open
+
+  const clickOnInventy = () => {
+    setIsOnInventry(true);
+    setIsOnAllocateAssete(false);
+    setIsOnDeallocate(false);
+    setSelectTab("inventry")
+  };
+  const clickOnAllocateAsset = () => {
+    setIsOnAllocateAssete(true);
+    setIsOnInventry(false);
+    setIsOnDeallocate(false);
+    setSelectTab("allocateAsset")
+  };
+  const clickOnDeallocate = () => {
+    setIsOnDeallocate(true);
+    setIsOnInventry(false);
+    setIsOnAllocateAssete(false);
+    setSelectTab("deallocate")
+  };
+  const clickOnAddAsset = () => {
+    setIsOnDeallocate(false);
+    setIsOnInventry(false);
+    setIsOnAllocateAssete(false);
+    setSelectTab("");
+  };
   return (
     <Box sx={{ marginTop: "7.3vh" }}>
       <Box sx={{ display: "flex", padding: "50px 0 20px 0", color: "white" }}>
@@ -114,16 +242,32 @@ const Home = () => {
           }}
         >
           <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "green",
-              borderRadius: "8px",
-              width: "10vw",
-              height: "8vh",
-            }}
+            sx={
+              !isOnInventry
+                ? {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    background: "green",
+                    borderRadius: "8px",
+                    width: "10vw",
+                    height: "8vh",
+                    cursor: "pointer",
+                  }
+                : {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: "green",
+                    borderRadius: "8px",
+                    width: "10vw",
+                    height: "8vh",
+                    borderBottom: "8px solid green",
+                  }
+            }
+            onClick={clickOnInventy}
           >
             <LayersIcon />
             <Typography sx={{ fontWeight: "bold" }}>Inventry</Typography>
@@ -139,36 +283,69 @@ const Home = () => {
               width: "10vw",
               height: "8vh",
             }}
+            onClick={clickOnAddAsset}
           >
             <AddIcon />
             <Typography sx={{ fontWeight: "bold" }}>Add asset</Typography>
           </Box>
           <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "#fa8288",
-              borderRadius: "8px",
-              width: "10vw",
-              height: "8vh",
-            }}
+            sx={
+              !isOnAllocateAssete
+                ? {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    background: "#fa8288",
+                    borderRadius: "8px",
+                    width: "10vw",
+                    height: "8vh",
+                    cursor: "pointer",
+                  }
+                : {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: "#fa8288",
+                    borderRadius: "8px",
+                    width: "10vw",
+                    height: "8vh",
+                    borderBottom: "8px solid #fa8288",
+                  }
+            }
+            onClick={clickOnAllocateAsset}
           >
             <EastIcon />
             <Typography sx={{ fontWeight: "bold" }}>Allocate asset</Typography>
           </Box>
           <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "red",
-              borderRadius: "8px",
-              width: "10vw",
-              height: "8vh",
-            }}
+            sx={
+              !isOnDeallocate
+                ? {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    background: "red",
+                    borderRadius: "8px",
+                    width: "10vw",
+                    height: "8vh",
+                    cursor: "pointer",
+                  }
+                : {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: "red",
+                    borderRadius: "8px",
+                    width: "10vw",
+                    height: "8vh",
+                    borderBottom: "8px solid red",
+                  }
+            }
+            onClick={clickOnDeallocate}
           >
             <EditIcon />
             <Typography sx={{ fontWeight: "bold" }}>
@@ -248,9 +425,11 @@ const Home = () => {
           elevation={3}
           sx={{
             width: "97vw",
-            height: "65vh",
+            maxHeight: "65vh",
             margin: "1vh 0 0 1.5vw",
             position: "relative",
+            overflow: "hidden",
+            borderRadius: "10px",
           }}
         >
           <Box
@@ -289,69 +468,7 @@ const Home = () => {
               <FilterListIcon sx={{ color: "#969799" }} />
             </Box>
           </Box>
-          <TableContainer>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>Asset Type</StyledTableCell>
-                  <StyledTableCell align="left">Brand</StyledTableCell>
-                  <StyledTableCell align="left">Asset ID</StyledTableCell>
-                  <StyledTableCell align="left">Price</StyledTableCell>
-                  <StyledTableCell align="left">Description</StyledTableCell>
-                  <StyledTableCell align="left">status</StyledTableCell>
-                  <StyledTableCell align="left">Allocated To</StyledTableCell>
-                  <StyledTableCell align="left">
-                    Allcoation Date
-                  </StyledTableCell>
-                  <StyledTableCell align="left">Service Ticket</StyledTableCell>
-                  <StyledTableCell align="left">Last Update</StyledTableCell>
-                  <StyledTableCell align="left">Varinty End</StyledTableCell>
-                  <StyledTableCell align="left">Location</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <StyledTableRow key={row.assetId}>
-                    <StyledTableCell align="left">
-                      {row.assetType}
-                    </StyledTableCell>
-                    <StyledTableCell component="th" scope="row">
-                      {row.brand}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.assetId}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">{row.price}</StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.description}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">{row.status}</StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.allocatedTo}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.allocationDate}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.serviceTicket}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.lastUpdate}
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      {row.varintyEnd}
-                    </StyledTableCell>
-                    <StyledTableCell align="left" width={"5.5%"}>
-                      <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-                        {row.location} <MoreVertIcon />
-                       </Box>
-                    </StyledTableCell>
-                  </StyledTableRow>
-                ))}
-                
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <TableComponent rows={rows} selectedTab = {selectTab} />
         </Paper>
       </Box>
     </Box>
