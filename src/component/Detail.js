@@ -1,8 +1,14 @@
 import { Box, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import React from "react";
 import EditIcon from "@mui/icons-material/Edit";
+import { useNavigate } from "react-router-dom";
 
 const Detail = () => {
+  const navigate = useNavigate()
+  const clickOnEditButton = () =>{
+    console.log("clicked");
+    navigate('/')
+  }
   return (
     <Box
       sx={{
@@ -31,7 +37,8 @@ const Detail = () => {
         >
           <Tooltip title="Edit">
             <IconButton
-              sx={{ position: "absolute", top: "1rem", right: "1rem" }}
+              sx={{ position: "absolute", top: "1rem", right: "1rem", color:"black" }}
+              onClick={clickOnEditButton}
             >
               <EditIcon sx={{ fontWeight: "bold", fontSize: "35px" }} />
             </IconButton>
