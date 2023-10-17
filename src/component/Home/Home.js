@@ -185,7 +185,7 @@ const Home = () => {
   const [isOnInventry, setIsOnInventry] = useState(false);
   const [isOnAllocateAssete, setIsOnAllocateAssete] = useState(false);
   const [isOnDeallocate, setIsOnDeallocate] = useState(false);
-  const [selectTab, setSelectTab] = useState("")
+  const [selectTab, setSelectTab] = useState("");
 
   // const [anchorEl, setAnchorEl] = React.useState(null);
   // const open = Boolean(anchorEl);
@@ -202,19 +202,19 @@ const Home = () => {
     setIsOnInventry(true);
     setIsOnAllocateAssete(false);
     setIsOnDeallocate(false);
-    setSelectTab("inventry")
+    setSelectTab("inventry");
   };
   const clickOnAllocateAsset = () => {
     setIsOnAllocateAssete(true);
     setIsOnInventry(false);
     setIsOnDeallocate(false);
-    setSelectTab("allocateAsset")
+    setSelectTab("allocateAsset");
   };
   const clickOnDeallocate = () => {
     setIsOnDeallocate(true);
     setIsOnInventry(false);
     setIsOnAllocateAssete(false);
-    setSelectTab("deallocate")
+    setSelectTab("deallocate");
   };
   const clickOnAddAsset = () => {
     setIsOnDeallocate(false);
@@ -223,8 +223,8 @@ const Home = () => {
     setSelectTab("");
   };
   return (
-    <Box sx={{ marginTop: "7.3vh" }}>
-      <Box sx={{ display: "flex", padding: "50px 0 20px 0", color: "white" }}>
+    <Box marginTop={"7.3vh"}>
+      <Box sx={{display: "flex", padding: "50px 0 20px 0", color: "white" }}>
         <Typography
           flexGrow={1}
           ml={"1.5vw"}
@@ -468,7 +468,7 @@ const Home = () => {
               <FilterListIcon sx={{ color: "#969799" }} />
             </Box>
           </Box>
-          <TableComponent rows={rows} selectedTab = {selectTab} />
+          <TableComponent rows={rows} selectedTab={selectTab} />
         </Paper>
       </Box>
     </Box>
