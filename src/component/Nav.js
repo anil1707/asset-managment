@@ -18,27 +18,27 @@ function Nav(props) {
   return (
     <Box >
       <CssBaseline />
-      <AppBar component="nav" sx={{background:'white'}}>
+      <AppBar component="nav" sx={{ background: 'white' }}>
         <Toolbar>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block", color:"black" } }}
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block", color: "black", fontWeight: "bold", fontSize: "30px" } }}
           >
             Asset Management
           </Typography>
           <Box
             sx={{
-              width: "15vw",
+              width: "18vw",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
             }}
           >
-            <Button sx={{ color: "black" }}>Report</Button>
+            <Button sx={{ color: "black" ,fontWeight:"500"  }}>Report</Button>
             <Box
               sx={{
-                width: "10vw",
+                width: "12vw",
                 display: "flex",
                 justifyContent: "space-around",
                 alignItems: "center",
@@ -51,11 +51,10 @@ function Nav(props) {
                 sx={{ bgcolor: orange }}
                 alt="Remy Sharp"
                 src="/broken-image.jpg"
-                margin="10px"
               />
-              <Box sx={{color:"black", padding:"5px"}}>
-                <Typography>Anil Yadav</Typography>
-                <Typography>IT Admin</Typography>
+              <Box sx={{ padding: "5px" }}>
+                <Typography sx={{ color: "black" , fontWeight:"500"}}>Anil Kumar Yadav</Typography>
+                <Typography sx={{ color: "darkgray", fontSize:"15px" }}>IT Admin</Typography>
               </Box>
             </Box>
           </Box>
